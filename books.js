@@ -30,10 +30,10 @@ app.post("/books/addBook",async(req,res)=>{
         if(savedBook){
         res.status(201).json({message: "new book added successfully",savedBook})
         }else{
-          res.status(404),json({message: "new book not found "})  
+          res.status(404),json({message: "new book not found ",error})  
         }
     } catch (error) {
-        res.status(500).json({message:"some thing went wrong while adding the book"})
+        res.status(500).json({message:"some thing went wrong while adding the book",error})
     }
 })
 
@@ -120,7 +120,7 @@ app.get("/books/publishedyear/year", async (req, res) => {
 publishedYear: 2012 });
 
     if (allBooks.length > 0) {
-        console.log("hai vijay")
+        
       res.status(200).json({
         message: "Successfully fetched all books from database",
         allBooks,
@@ -157,7 +157,7 @@ app.post("/books/update/:id",async (req,res)=>{
 })
 
 
-// 9.update the rating by id
+// 9.update the rating by title
 
 app.post("/books/updatedata/:title",async (req,res)=>{
     try {
@@ -183,7 +183,7 @@ app.delete("/books/delete/:id",async (req,res)=>{
     try {
         const deletedData=await booksModel.findByIdAndDelete(req.params.id)
         res.status(200).json({
-        message: "Successfully  updated data",
+        message: "Successfully  deleted data",
         deletedData})
     } catch (error) {
         console.log(error)
