@@ -195,8 +195,9 @@ app.delete("/books/delete/:id",async (req,res)=>{
 })
 
 
-const PORT=3000
+// const PORT=3000
 
-app.listen(PORT,()=>{
-    console.log("server running in thr port",PORT)
-})
+// app.listen(PORT,()=>{
+//     console.log("server running in thr port",PORT)
+// })
+module.exports=app
